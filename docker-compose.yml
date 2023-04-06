@@ -10,3 +10,16 @@ services:
     entrypoint: imply/bin/supervise -c imply/conf/supervise/pivot.conf
     volumes:
       - ./conf:/imply/conf
+
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+
+volumes:
+  mysql_data: {}

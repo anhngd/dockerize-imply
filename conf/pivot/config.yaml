@@ -53,11 +53,15 @@ initialSettings:
 #   location: mysql
 #   connection: 'mysql://user:pw@192.168.99.100:3306/pivot'
 
+stateStore:
+  location: mysql
+  connection: 'mysql://root:${MYSQL_PASSWORD}@db:3306/imply_pivot'
+
 sessionStore:
   storageType: 'mysql'
   tablename: 'imply_sessions'
   connection:
-    host: 'awesomeco.3242452413.us-east-1.rds.amazonaws.com'
+    host: 'db'
     user: 'root'
-    password: 'super-secret-1234'
-    database: 'my_db'
+    password: ${MYSQL_PASSWORD}
+    database: 'imply_pivot'
