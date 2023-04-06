@@ -2,6 +2,8 @@ version: "3"
 
 services: 
   imply:
+    image: anhngd/imply:${IMPLY_VERSION}
+    container_name: imply-pivot
     build: .
     ports:
       - 9095:9095

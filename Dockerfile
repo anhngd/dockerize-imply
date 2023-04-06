@@ -6,7 +6,7 @@ RUN apt-get -y update && \
         wget perl && \
         rm -rf /var/lib/apt/lists/*
 
-ENV IMPLY_VERSION 2021.03
+ENV IMPLY_VERSION 2023.03
 RUN wget -qO- https://static.imply.io/release/imply-${IMPLY_VERSION}.tar.gz | tar -xzf - \
     --exclude=imply-${IMPLY_VERSION}/conf \
     --exclude=imply-${IMPLY_VERSION}/conf-quickstart \

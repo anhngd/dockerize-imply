@@ -11,6 +11,14 @@ servingMode: clustered
 # Uncomment the line below to enable user authentication, for more info see: https://docs.imply.io/on-prem/configure/config-api
 #userMode: native-users
 
+# userMode: oidc-authentication
+# oidcOptions:
+#   issuer: https://data.rofi.io
+#   app_base_url: https://data.rofi.io
+#   client_id: 375916121749-j822d38b1ssfp79pqs0369t6q4gpa1jo.apps.googleusercontent.com
+#   client_secret: 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
+#   scope: "openid profile email"
+
 
 # The initial settings that will be loaded in, in this case a connection will be created for a Druid cluster that is running locally.
 initialSettings:
@@ -18,7 +26,7 @@ initialSettings:
     - name: druid
       type: druid
       title: My Druid
-      host: localhost:8888
+      host: 10.10.7.7:8888
 
 #
 # Pivot must have a state store in order to function
@@ -33,9 +41,9 @@ initialSettings:
 # 1) File-backed (sqlite) state (not suitable for running in a cluster)
 #
 
-stateStore:
-  type: sqlite
-  connection: var/pivot/pivot-settings.sqlite
+# stateStore:
+#   type: sqlite
+#   connection: var/pivot/pivot-settings.sqlite
 
 #
 # 2) Database-backed state 'mysql' (MySQL) or 'pg' (Postgres)
@@ -44,3 +52,12 @@ stateStore:
 # stateStore:
 #   location: mysql
 #   connection: 'mysql://user:pw@192.168.99.100:3306/pivot'
+
+sessionStore:
+  storageType: 'mysql'
+  tablename: 'imply_sessions'
+  connection:
+    host: 'awesomeco.3242452413.us-east-1.rds.amazonaws.com'
+    user: 'root'
+    password: 'super-secret-1234'
+    database: 'my_db'
